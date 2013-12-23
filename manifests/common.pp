@@ -88,7 +88,9 @@ class puppet::common(
 	}
 
 	file { '/etc/puppet/auth.conf':
-		source => 'puppet:///modules/puppet/auth.conf',
+		# XXX: Error: /Stage[main]/Puppet::Common/File[/etc/puppet/auth.conf]: Could not evaluate: uninitialized constant Puppet::FileSystem::File Could not retrieve file metadata for puppet:///modules/puppet/auth.conf: uninitialized constant Puppet::FileSystem::File
+		#source => 'puppet:///modules/puppet/auth.conf',
+		content => template('puppet/auth.conf.erb'),
 		owner => root,
 		group => root,
 		mode => 644,		# u=rw,go=r

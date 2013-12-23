@@ -53,7 +53,9 @@ class puppet::puppetdb(
 	}
 
 	file { '/etc/puppet/routes.yaml':
-		source => 'puppet:///modules/puppet/routes.yaml',
+		# XXX: Error: /Stage[main]/Puppet::Puppetdb/File[/etc/puppet/routes.yaml]: Could not evaluate: uninitialized constant Puppet::FileSystem::File Could not retrieve file metadata for puppet:///modules/puppet/routes.yaml: uninitialized constant Puppet::FileSystem::File
+		#source => 'puppet:///modules/puppet/routes.yaml',
+		content => template('puppet/routes.yaml.erb'),
 		owner => root,
 		group => root,
 		mode => 644,		# u=rw,go=r
