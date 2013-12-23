@@ -17,7 +17,7 @@ Module specific notes:
 
 Dependencies:
 * my puppet-shorewall module (optional)
-* my puppet-yum module (optional, unreleased)
+* my puppet-yum module (optional)
 * puppetlabs-apt module (optional, untested)
 
 
