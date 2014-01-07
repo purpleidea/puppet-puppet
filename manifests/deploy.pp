@@ -135,6 +135,7 @@ class puppet::deploy(		# copy files into the /etc/puppet/ directory...
 	if "${source_modules}" != '' {
 		file { "${dest_modules}":
 			source => $source_modules,		# copy files over
+			ignore => '.git',	# extra copying is superfluous!
 			ensure => directory,
 			recurse => true,
 			purge => true,
