@@ -170,7 +170,7 @@ class puppet::server(
 	#}
 
 	if $shorewall {
-		if $allow == 'all' {
+		if $allow == 'all' or "${allow}" == '' {
 			$net = "${zone}"
 		} else {
 			$net = is_array($allow) ? {
