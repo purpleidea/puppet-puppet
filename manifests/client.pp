@@ -17,9 +17,11 @@
 
 class puppet::client(
 	$start = true,
+	$repo = true,			# include repo's automatically ?
 	$pluginsync = true		# do we want to enable pluginsync?
 ) {
 	class { 'puppet::common':
+		repo => $repo,
 		start => $start,
 	}
 
