@@ -33,7 +33,7 @@ class puppet::vardir {	# module vardir snippet (slightly different for puppet)
 		mode => 600,
 		backup => false,	# don't backup to filebucket
 		#before => File["${module_vardir}"],	# redundant
-		require => Package['puppet'],	# puppet module is seen
+		#require => Package['puppet'],	# the package should point here
 	}
 	$module_vardir = sprintf("%s/puppet/", regsubst($tmp, '\/$', ''))
 	# NOTE: puppet specific storage space not needed at the moment...

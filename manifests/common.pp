@@ -27,6 +27,10 @@ class puppet::common(
 		include puppet::params::repo
 	}
 
+	# this is here so that the puppet package references the vardirtmp dir,
+	# and not the other way around. this lets puppet::vardir be used alone!
+	$tmp = sprintf("%s/", regsubst($::puppet::vardir::puppet_vardirtmp, '\/$', ''))
+
 	$ensure = $start ? {
 		false => undef,		# we don't want ensure => stopped
 		default => running,
@@ -52,7 +56,10 @@ class puppet::common(
 	# this package comes from the repo, the repo dependency is above...
 	package { 'puppet':
 		ensure => present,
-		before => File['/etc/puppet/'],
+		before => [
+			File['/etc/puppet/'],
+			File["${tmp}"],	# this points to inside puppet::vardir
+		],
 		require => Package[$package_augeas],
 	}
 
