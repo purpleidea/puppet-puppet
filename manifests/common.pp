@@ -21,6 +21,7 @@ class puppet::common(
 	$start = true				# start puppet client ?
 ) {
 	include puppet::vardir
+	include puppet::facter
 	include puppet::params::package
 	$package_augeas = $puppet::params::package::augeas
 	if $repo {
