@@ -13,7 +13,8 @@ Module specific notes:
 * A lot has changed from Puppet version to version.
 * It has been hard to follow this and keep it sane.
 * There are serious improvements that could be made to this code.
-* I wouldn't recommend it unless you're okay hacking on Puppet code!
+* This module is useful for automatic deployments of puppet with vagrant.
+* The puppet::vardir class is a dependency for some of my other puppet modules.
 
 Dependencies:
 * my puppet-shorewall module (optional)
