@@ -33,7 +33,7 @@ class puppet::common(
 	$tmp = sprintf("%s/", regsubst($::puppet::vardir::puppet_vardirtmp, '\/$', ''))
 
 	$ensure = $start ? {
-		false => undef,		# we don't want ensure => stopped
+		false => stopped,		# we want ensure => stopped
 		default => running,
 	}
 
